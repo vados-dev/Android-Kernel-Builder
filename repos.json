@@ -20,7 +20,7 @@
     ],
     "params": {
       "ARCH": "arm",
-      "CROSS_COMPILE": "aarch64-linux-gnu-",
+      "CROSS_COMPILE": "arm-linux-androideabi-",
       "CROSS_COMPILE_ARM32": "arm-linux-androideabi-",
       "CROSS_COMPILE_COMPAT": "arm-linux-androideabi-",
       "CLANG_TRIPLE": "arm-linux-gnueabi-",
