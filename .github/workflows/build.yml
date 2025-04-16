@@ -69,10 +69,9 @@ jobs:
           sudo apt-get install --no-install-recommends -y libssl-dev lftp zstd wget aria2 build-essential pigz device-tree-compiler ca-certificates
 
       - name: 🌟 Clone kernel source => (${{ env.kernelRepo }})
-        working-directory: $kernelDir
+        working-directory: ./${{ env.kernelDir }}
         run: |
-          cd 
-          git clone --recursive --branch $kernelBranch $kernelRepo $kernelName --depth=1
+          git clone --recursive  --depth=1 --branch $kernelBranch $kernelRepo $kernelName
 
       - name: 💫 Get toolchains
         working-directory: ./${{ env.kernelDir }}
