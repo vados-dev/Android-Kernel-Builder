@@ -30,7 +30,7 @@ jobs:
           echo "EOF" >> $GITHUB_OUTPUT
 
   Build-Kernel:
-    name: "Build kernel by ${{ github.actor }}"
+    name: Build kernel by ${{ github.actor }}
     runs-on: ubuntu-22.04
     needs:
       - Set-repos
@@ -90,7 +90,7 @@ jobs:
             echo "$(pwd)/$name/bin" >> $GITHUB_PATH
           done
 
-          echo "PATH Variable: $PATH"
+          echo "PATH Variable: "$PATH
 
       - name: "🧮 Set args"
         id: generate-args
@@ -108,32 +108,32 @@ jobs:
           AR=$(echo $params | jq -r ".AR")
           CC=$(echo $params | jq -r ".CC")
 
-          echo "ARCH=$ARCH" >> $GITHUB_ENV
+          echo ARCH=$ARCH >> $GITHUB_ENV
 
           args="-j$(nproc --all)"
           if [ -n "${{ env.OUT_DIR }}" ]; then
             mkdir -p $(pwd)/${{ env.OUT_DIR }}
             args="$args O=$(pwd)/${{ env.OUT_DIR }}"
           fi
-          if [ -n "$ARCH" ]; then
-            args="$args ARCH=$ARCH"
+          if [ -n $ARCH ]; then
+            args=$args" ARCH="$ARCH
           fi
           if [ -n "$CROSS_COMPILE" ]; then
-            args="$args CROSS_COMPILE=$CROSS_COMPILE"
+            args=$args" CROSS_COMPILE="$CROSS_COMPILE
           fi
-          if [ -n "$CLANG_TRIPLE" ]; then
-            args="$args CLANG_TRIPLE=$CLANG_TRIPLE"
+          if [ -n $CLANG_TRIPLE ]; then
+            args=$args" CLANG_TRIPLE="$CLANG_TRIPLE
           fi
-          if [ -n "$CROSS_COMPILE_COMPAT" ]; then
-            args="$args CROSS_COMPILE_ARM32=$CROSS_COMPILE_COMPAT"
+          if [ -n $CROSS_COMPILE_COMPAT ]; then
+            args=$args "CROSS_COMPILE_ARM32="$CROSS_COMPILE_COMPAT
           fi
-          if [ -n "$AR" ]; then
-            args="$args AR=$AR"
+          if [ -n $AR ]; then
+            args=$args" AR="$AR
           fi
-          if [ -n "$CC" ]; then
-            args="$args CC=$CC"
+          if [ -n $CC ]; then
+            args=$args" CC="$CC
           fi
-          echo "args=$args" >> $GITHUB_OUTPUT
+          echo "args="$args >> $GITHUB_OUTPUT
 
       - name: "😎 Update KernelSU"
         working-directory: ./${{ env.kernelDir }}/${{ env.kernelName }}
