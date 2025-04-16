@@ -1,4 +1,4 @@
-name: "Build kernels"
+name: Build kernels
 
 env:
   CONFIGURATION: "repos.json"
@@ -13,10 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       repos: ${{ steps.generate-matrix.outputs.repos }}
+
+    steps:  
       # This action checks-out your CONFIGSitory under $GITHUB_WORKSPACE, so your workflow can access it.
-      - name: 😄 Checkout
+      - name: "😄 Checkout"
         uses: actions/checkout@v4
-      #- name: ❌ Clean-up
+      
+      #- name: "❌ Clean-up"
       #  uses: rokibhasansagar/slimhub_actions@main
 
       - name: "😆 Generate Matrix"
@@ -27,7 +30,7 @@ jobs:
           echo "EOF" >> $GITHUB_OUTPUT
 
   Build-Kernel:
-    name: "🤞 Build kernel by "${{ github.actor }}
+    name: "🤞 Build kernel by ${{ github.actor }}"
     runs-on: ubuntu-latest
     needs:
       - Set-repos
