@@ -1,11 +1,11 @@
 [  {
     "kernelSource": {
-      "name": "miku-KernelSU",
+      "name": "kernelSPRD",
       "repo": "https://github.com/vados-dev/android_kernel_sprd_lucyzh",
       "branch": "main",
       "device": "sl8541e_cus_go"
     },
-    "withKernelSU": true,
+    "withKernelSU": false,
     "toolchains": [
       {
         "repo": "https://android.googlesource.com/platform/prebuilts/gas/linux-x86",
