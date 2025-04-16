@@ -66,7 +66,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y build-essential bc curl git zip ftp gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi llvm
-          sudo apt-get install --no-install-recommends -y wget ftp libfl-dev python3 python-is-python3 python-dev-is-python3 libarchive-tools lib64
+          sudo apt-get install --no-install-recommends -y wget ftp libfl-dev python3 python-is-python3 python-dev-is-python3 libarchive-tools
           sudo apt-get install --no-install-recommends -y libssl-dev lftp zstd wget aria2 build-essential pigz device-tree-compiler ca-certificates
 
       - name: "🌟 Clone kernel source => (${{ env.kernelRepo }})"
